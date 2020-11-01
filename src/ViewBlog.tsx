@@ -7,24 +7,47 @@ import { Button } from '@material-ui/core'
 
 export interface IViewBlog {
   id: string
-  blogUpdated:() => void
+  blogUpdated: () => void
 }
 
-function ViewBlog({ history, id, blogUpdated }: IViewBlog & RouteComponentProps) {
+function ViewBlog({
+  history,
+  id,
+  blogUpdated,
+}: IViewBlog & RouteComponentProps) {
   useEffect(() => {
     data.getBlogDetails(id).then((blog) => setBlog(blog))
   }, [id])
   const [blog, setBlog] = useState<Blog | null>()
+
+  const formatDate = (dateJSONString: string): string => {
+    const d = new Date(dateJSONString)
+    return `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`
+  }
+
   return blog ? (
     <div className={styles.viewBlog}>
       <div>TITLE: {blog.title}</div>
+      <div>DATE: {formatDate(blog.date || '')}</div>
       <div>BODY: {blog.body}</div>
-      <Button variant="contained" color="secondary" onClick={() => {
-        data.removeBlog(blog).then(() => {
-          blogUpdated()
-          history.replace(`/`)
-        })
-      }}>
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => history.push(`/editblog/${blog.id}`)}
+      >
+        Edit
+      </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => {
+          data.removeBlog(blog).then(() => {
+            blogUpdated()
+            history.replace(`/`)
+          })
+        }}
+      >
         Remove
       </Button>
     </div>

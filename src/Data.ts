@@ -68,6 +68,22 @@ export async function saveBlog(blog: Blog): Promise<string> {
   })
 }
 
+export async function updateBlog(blog: Blog): Promise<string> {
+  return new Promise<string>(async (resolve, reject) => {
+    try {
+      const result = await axios.put(`${URLs.blog}/${blog.id}`, {
+        title: blog.title,
+        body: blog.body,
+      })
+      console.log('result from update', result)
+      resolve(result.data)
+    } catch (err) {
+      console.error('caught error updating blog', err)
+      reject(err)
+    }
+  })
+}
+
 export async function removeBlog(blog: Blog): Promise<string> {
   return new Promise<string>(async (resolve, reject) => {
     try {
