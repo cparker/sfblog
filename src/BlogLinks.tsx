@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react'
 import styles from './BlogLinks.module.scss'
 import BlogLink from './BlogLink'
 import { Blog } from './Data'
@@ -12,8 +11,9 @@ export default function BlogLinks({ blogs }: IBlogLinkProps) {
   return (
     <div className={styles.blogLinks}>
       <div className={styles.title}>Blogs</div>
-      {blogs.map(blog => <BlogLink key={blog.id} blog={blog}/>)}
- 
+      {blogs.map((blog) => (
+        <BlogLink key={blog.id} blog={blog} />
+      ))}
     </div>
   )
 }

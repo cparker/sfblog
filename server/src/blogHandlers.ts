@@ -1,18 +1,11 @@
 import lowdb from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
 import { v4 as uuidv4 } from 'uuid'
+import { Request, Response, NextFunction } from 'express'
 let db: any = lowdb(new FileSync('db/db.json'))
 db.defaults({
   blogs: [],
 }).write()
-
-import { Request, Response, NextFunction } from 'express'
-
-type Blog = {
-  id: number
-  title: string
-  body: string
-}
 
 export function handleNewBlog(req: Request, res: Response, next: NextFunction) {
   db.read()
@@ -44,12 +37,9 @@ export function handleGetBlogById(
   res: Response,
   next: NextFunction
 ) {
-  console.log('params is', req.params)
   const blogId = req.params.id
-  console.log('blogId', blogId)
   db.read()
   const blog = db.get('blogs').find({ id: blogId }).value()
-  console.log('found blog', blog)
   res.send(blog)
 }
 
@@ -58,8 +48,6 @@ export function handleUpdateBlog(
   res: Response,
   next: NextFunction
 ) {
-  console.log('updating blog for id', req.params.id)
-  console.log('body is ', req.body)
   db.read()
   db.get('blogs')
     .find({ id: req.params.id })
