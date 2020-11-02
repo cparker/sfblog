@@ -6,11 +6,12 @@ export type Blog = {
   date?: string
   body: string
 }
+const HOST = process.env.REACT_APP_SERVICE_HOST || 'http://localhost:5000'
 
 const URLs = {
-  health: 'http://localhost:5000/health',
-  blogs: 'http://localhost:5000/blogs',
-  blog: 'http://localhost:5000/blog',
+  health: `${HOST}/health`,
+  blogs: `${HOST}/blogs`,
+  blog: `${HOST}/blog`,
 }
 
 export async function getHealth(): Promise<string> {
