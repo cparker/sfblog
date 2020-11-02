@@ -35,10 +35,10 @@ function EditBlog({
           value={title || ''}
           onChange={(event) => setTitle(event.target.value)}
           classes={{root:styles.tf}}
+          variant="outlined"
         />
         <TextField
           id="blogbody"
-          label="body"
           value={body || ''}
           multiline={true}
           variant="outlined"
@@ -47,8 +47,9 @@ function EditBlog({
           onChange={(event) => setBody(event.target.value)}
         />
         <Button
+          classes={{root:styles.save}}
           id="blogEditSave"
-          variant="contained"
+          variant="outlined"
           color="primary"
           onClick={() => {
             console.log('saving id', id)

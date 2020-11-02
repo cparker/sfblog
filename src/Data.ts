@@ -1,8 +1,4 @@
 import axios from 'axios'
-import {
-  collapseTextChangeRangesAcrossMultipleVersions,
-  createModuleResolutionCache,
-} from 'typescript'
 
 export type Blog = {
   id?: string

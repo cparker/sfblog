@@ -1,0 +1,22 @@
+.viewBlog {
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom:0.5rem;
+  }
+
+  .body {
+    margin-top:0.5rem;
+  }
+
+  .actions {
+    margin-top:0.5rem;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    width:20%;
+  }
+
+}
+
