@@ -29,6 +29,7 @@ function EditBlog({
     <div className={styles.editBlog}>
       <form>
         <TextField
+          id="blogtitle"
           label="title"
           fullWidth={true}
           value={title || ''}
@@ -36,6 +37,7 @@ function EditBlog({
           classes={{root:styles.tf}}
         />
         <TextField
+          id="blogbody"
           label="body"
           value={body || ''}
           multiline={true}
@@ -45,6 +47,7 @@ function EditBlog({
           onChange={(event) => setBody(event.target.value)}
         />
         <Button
+          id="blogEditSave"
           variant="contained"
           color="primary"
           onClick={() => {

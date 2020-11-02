@@ -32,6 +32,7 @@ function ViewBlog({
       <div>BODY: {blog.body}</div>
 
       <Button
+        id="editBlogEdit"
         variant="contained"
         color="primary"
         onClick={() => history.push(`/editblog/${blog.id}`)}
@@ -39,6 +40,7 @@ function ViewBlog({
         Edit
       </Button>
       <Button
+        id="editBlogRemove"
         variant="contained"
         color="secondary"
         onClick={() => {
